@@ -1,0 +1,7 @@
+.header{
+    display: flex;
+}
+
+.header *{
+    padding: 10px 0px 0px 30px;
+}
