@@ -22,6 +22,7 @@ const UploadPicture = (props) => {
         for (var pair of formData.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }
+        console.log("stest")
 
         // 서버의 upload API 호출
         // const res = await fetch('http://localhost:3000/api/users/test', {
