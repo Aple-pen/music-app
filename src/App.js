@@ -2,6 +2,7 @@ import './App.css';
 import UploadPicture from "./user/UploadPicture";
 import Header from "./header/Header";
 import {Route, Routes} from "react-router-dom";
+import Player from "./player/Player";
 
 const Home = () => {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/user" element={<UploadPicture/>}/>
                 </Routes>
             </div>
+            <Player />
         </div>
     );
 }
