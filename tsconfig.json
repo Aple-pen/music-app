@@ -22,7 +22,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "baseUrl": "src"
   },
   "include": [
     "./src/"

@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import "./Player.css"
 
-const Player = () => {
+interface IProps{
+    audioUrl : string
+}
+
+const Player = (props : IProps) => {
 
     const [audio, setAudio] = useState(new Audio(require("../asset/media/빨간내복야코 - 당신의 아침을 깨우는 알람 송.mp3")))
 
@@ -31,7 +35,6 @@ const Player = () => {
         if (!isPlaying) {
             // setIsPlaying(true)
             audio.play()
-
         } else {
             console.log("=======")
         }
@@ -58,13 +61,22 @@ const Player = () => {
         <>
             <figure className="player">
                 <figcaption>Listen to the T-Rex:</figcaption>
-                <button onClick={handlePlay}>start</button>
-                <button onClick={handleStop}>stop</button>
                 <progress className="progress" id="progress" value={String(currentTime)}
                           max={String(duration)}></progress>
+                <div className="btn-wrap">
+                    <img className="btn-prev" src={require("../asset/img/player/prev.png")}/>
+                    {isPlaying ?
+                        <img className="stop-btn" src={require("../asset/img/player/pause.png")} onClick={handleStop}/>
+                        :
+                        <img className="play-btn" src={require("../asset/img/player/play.png")} onClick={handlePlay}/>}
+                    {/*<button onClick={handlePlay}>start</button>*/}
+                    {/*<button onClick={handleStop}>stop</button>*/}
+                    <img className="btn-stop" src={require("../asset/img/player/stop.png")}/>
+                    <img className="btn-next" src={require("../asset/img/player/next.png")}/>
+                </div>
+
                 {(currentTime || duration) &&
-                    <h1>{currentTime}:{duration}</h1>
-                }
+                    <h1>{currentTime}:{duration}</h1>}
             </figure>
         </>
     )

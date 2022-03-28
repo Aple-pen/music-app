@@ -1,7 +1,7 @@
 .player {
     width: 98%;
     background-color: beige;
-    height: 100px;
+    height: 150px;
     margin: 10px;
 }
 
@@ -21,4 +21,21 @@
     background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
     background: linear-gradient(to right, #93F9B9, #1D976C);
 
+}
+
+
+
+.btn-wrap{
+    display: flex;
+    justify-content: center;
+    width : 50%;
+    height : 100px;
+    background-color: #93F9B9;
+
+}
+
+.btn-wrap img{
+    margin : 5px;
+    width :100%;
+    height : 80%;
 }
