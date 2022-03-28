@@ -1,6 +1,24 @@
-.player{
+.player {
     width: 98%;
-    background-color :beige;
+    background-color: beige;
     height: 100px;
     margin: 10px;
+}
+
+#progress {
+    appearance: none;
+}
+
+#progress::-webkit-progress-bar {
+    background: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: inset 3px 3px 10px #ccc;
+}
+
+#progress::-webkit-progress-value {
+    border-radius: 10px;
+    background: #1D976C;
+    background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
+    background: linear-gradient(to right, #93F9B9, #1D976C);
+
 }

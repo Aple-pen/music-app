@@ -60,10 +60,12 @@ const Player = () => {
                 <figcaption>Listen to the T-Rex:</figcaption>
                 <button onClick={handlePlay}>start</button>
                 <button onClick={handleStop}>stop</button>
+                <progress className="progress" id="progress" value={String(currentTime)}
+                          max={String(duration)}></progress>
+                {(currentTime || duration) &&
+                    <h1>{currentTime}:{duration}</h1>
+                }
             </figure>
-            {(currentTime || duration) &&
-                <h1>{currentTime}:{duration}</h1>
-            }
         </>
     )
 }
