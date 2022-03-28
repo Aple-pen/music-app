@@ -5,22 +5,20 @@ const Player = () => {
 
     const [audio, setAudio] = useState(new Audio(require("../asset/media/빨간내복야코 - 당신의 아침을 깨우는 알람 송.mp3")))
 
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isPlaying, setIsPlaying] = useState<boolean>(false)
 
-    const [currentTime, setCurrentTime] = useState<number>(0)
-    const [duration, setDuration] = useState<number>(0)
+    const [currentTime, setCurrentTime] = useState<number | null>(null)
+    const [duration, setDuration] = useState<number | null>(null)
 
-
-    audio.addEventListener("loadeddata", (e) => {
-        console.log(e)
-    })
-
-    audio.addEventListener("pause", e => {
-        console.log(e)
-    })
+    // audio.addEventListener("loadeddata", (e) => {
+    //     console.log(e)
+    // })
+    //
+    // audio.addEventListener("pause", e => {
+    //     console.log(e)
+    // })
 
     audio.addEventListener("playing", e => {
-        console.log(e)
         setIsPlaying(true)
     })
 
@@ -56,9 +54,6 @@ const Player = () => {
     }, [isPlaying])
 
 
-
-
-
     return (
         <>
             <figure className="player">
@@ -66,8 +61,9 @@ const Player = () => {
                 <button onClick={handlePlay}>start</button>
                 <button onClick={handleStop}>stop</button>
             </figure>
-            <h1>{currentTime}:{duration}</h1>
-
+            {(currentTime || duration) &&
+                <h1>{currentTime}:{duration}</h1>
+            }
         </>
     )
 }
