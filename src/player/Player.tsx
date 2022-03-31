@@ -40,6 +40,15 @@ const Player = (props : IProps) => {
         }
     }
 
+    const handlePause = ()=>{
+        if (isPlaying) {
+            console.log("================================================stop==================================")
+            audio.pause()
+            setIsPlaying(false)
+        } else {
+            console.log("stop")
+        }
+    }
     const handleStop = () => {
         if (isPlaying) {
             console.log("================================================stop==================================")
@@ -48,6 +57,7 @@ const Player = (props : IProps) => {
             setIsPlaying(false)
         } else {
             console.log("stop")
+            audio.currentTime = 0
         }
 
     }
@@ -65,12 +75,12 @@ const Player = (props : IProps) => {
                     <div className="btn-wrap">
                         <img className="btn-prev" src={require("../asset/img/player/prev.png")}/>
                         {isPlaying ?
-                            <img className="stop-btn" src={require("../asset/img/player/pause.png")} onClick={handleStop}/>
+                            <img className="stop-btn" src={require("../asset/img/player/pause.png")} onClick={handlePause}/>
                             :
                             <img className="play-btn" src={require("../asset/img/player/play.png")} onClick={handlePlay}/>}
                         {/*<button onClick={handlePlay}>start</button>*/}
                         {/*<button onClick={handleStop}>stop</button>*/}
-                        <img className="btn-stop" src={require("../asset/img/player/stop.png")}/>
+                        <img className="btn-stop" src={require("../asset/img/player/stop.png")} onClick={handleStop}/>
                         <img className="btn-next" src={require("../asset/img/player/next.png")}/>
                     </div>
                     <progress className="progress" id="progress" value={String(currentTime) || "50"}
