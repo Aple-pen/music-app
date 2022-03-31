@@ -11,7 +11,7 @@ const Player = (props : IProps) => {
 
     const [isPlaying, setIsPlaying] = useState<boolean>(false)
 
-    const [currentTime, setCurrentTime] = useState<number | null>(null)
+    const [currentTime, setCurrentTime] = useState<number | null | string>(null)
     const [duration, setDuration] = useState<number | null>(null)
 
     // audio.addEventListener("loadeddata", (e) => {
@@ -27,7 +27,7 @@ const Player = (props : IProps) => {
     })
 
     audio.addEventListener("timeupdate", e => {
-        setCurrentTime(Math.floor(audio.currentTime as number))
+        setCurrentTime((audio.currentTime as number).toFixed(1))
         setDuration(Math.floor(audio.duration as number))
     })
 
@@ -59,25 +59,28 @@ const Player = (props : IProps) => {
 
     return (
         <>
-            <figure className="player">
+            <div className="player">
                 <figcaption>Listen to the T-Rex:</figcaption>
-                <progress className="progress" id="progress" value={String(currentTime)}
-                          max={String(duration)}></progress>
-                <div className="btn-wrap">
-                    <img className="btn-prev" src={require("../asset/img/player/prev.png")}/>
-                    {isPlaying ?
-                        <img className="stop-btn" src={require("../asset/img/player/pause.png")} onClick={handleStop}/>
-                        :
-                        <img className="play-btn" src={require("../asset/img/player/play.png")} onClick={handlePlay}/>}
-                    {/*<button onClick={handlePlay}>start</button>*/}
-                    {/*<button onClick={handleStop}>stop</button>*/}
-                    <img className="btn-stop" src={require("../asset/img/player/stop.png")}/>
-                    <img className="btn-next" src={require("../asset/img/player/next.png")}/>
+                <div className="player-wrap">
+                    <div className="btn-wrap">
+                        <img className="btn-prev" src={require("../asset/img/player/prev.png")}/>
+                        {isPlaying ?
+                            <img className="stop-btn" src={require("../asset/img/player/pause.png")} onClick={handleStop}/>
+                            :
+                            <img className="play-btn" src={require("../asset/img/player/play.png")} onClick={handlePlay}/>}
+                        {/*<button onClick={handlePlay}>start</button>*/}
+                        {/*<button onClick={handleStop}>stop</button>*/}
+                        <img className="btn-stop" src={require("../asset/img/player/stop.png")}/>
+                        <img className="btn-next" src={require("../asset/img/player/next.png")}/>
+                    </div>
+                    <progress className="progress" id="progress" value={String(currentTime) || "50"}
+                              max={String(duration)}></progress>
                 </div>
+
 
                 {(currentTime || duration) &&
                     <h1>{currentTime}:{duration}</h1>}
-            </figure>
+            </div>
         </>
     )
 }

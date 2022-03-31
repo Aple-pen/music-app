@@ -22,7 +22,7 @@ function App() {
                     <Route path="/user" element={<UploadPicture/>}/>
                 </Routes>
             </div>
-            <Player />
+            <Player audioUrl={""}/>
         </div>
     );
 }
