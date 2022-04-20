@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import "./Player.css"
 
-interface IProps{
-    audioUrl : string
+interface IProps {
+    audioUrl: string
 }
 
-const Player = (props : IProps) => {
+const Player = (props: IProps) => {
 
     const [audio, setAudio] = useState(new Audio(require("../asset/media/빨간내복야코 - 당신의 아침을 깨우는 알람 송.mp3")))
 
@@ -40,7 +40,7 @@ const Player = (props : IProps) => {
         }
     }
 
-    const handlePause = ()=>{
+    const handlePause = () => {
         if (isPlaying) {
             console.log("================================================stop==================================")
             audio.pause()
@@ -75,21 +75,33 @@ const Player = (props : IProps) => {
                     <div className="btn-wrap">
                         <img className="btn-prev" src={require("../asset/img/player/prev.png")}/>
                         {isPlaying ?
-                            <img className="stop-btn" src={require("../asset/img/player/pause.png")} onClick={handlePause}/>
+                            <img className="stop-btn" src={require("../asset/img/player/pause.png")}
+                                 onClick={handlePause}/>
                             :
-                            <img className="play-btn" src={require("../asset/img/player/play.png")} onClick={handlePlay}/>}
+                            <img className="play-btn" src={require("../asset/img/player/play.png")}
+                                 onClick={handlePlay}/>}
                         {/*<button onClick={handlePlay}>start</button>*/}
                         {/*<button onClick={handleStop}>stop</button>*/}
                         <img className="btn-stop" src={require("../asset/img/player/stop.png")} onClick={handleStop}/>
                         <img className="btn-next" src={require("../asset/img/player/next.png")}/>
                     </div>
+                    <div className="current-time">
+                        <p>{currentTime || "0 : 00"}</p>
+                    </div>
                     <progress className="progress" id="progress" value={String(currentTime) || "50"}
                               max={String(duration)}></progress>
+                    <div className="duration-time">
+                        <p>{duration || "0 : 00"}</p>
+                    </div>
+                    <div className="content-info">
+                        <div>
+                            <img alt="test"/>
+                            <p>song</p>
+                        </div>
+                    </div>
                 </div>
 
 
-                {(currentTime || duration) &&
-                    <h1>{currentTime}:{duration}</h1>}
             </div>
         </>
     )

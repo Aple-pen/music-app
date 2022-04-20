@@ -3,6 +3,9 @@ import UploadPicture from "./user/UploadPicture";
 import Header from "./header/Header";
 import {Route, Routes} from "react-router-dom";
 import Player from "./player/Player";
+import dotenv from "dotenv";
+
+// dotenv.config()
 
 const Home = () => {
     return (
